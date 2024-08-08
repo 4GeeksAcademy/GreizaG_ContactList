@@ -12,7 +12,7 @@ export const Navbar = () => {
 				</div>
 				<div className="ml-auto">
 					<Link to="/newcontact">
-						<span className="navbar-brand mb-0 h1"><i class="fa-solid fa-user-plus fs-4"></i></span>
+						<span className="navbar-brand mb-0 h1"><i className="fa-solid fa-user-plus fs-4"></i></span>
 					</Link>
 				</div>
 			</div>

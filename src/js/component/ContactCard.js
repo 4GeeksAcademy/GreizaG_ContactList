@@ -1,8 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Context } from "./../store/appContext";
+import { Link, useParams } from "react-router-dom";
 import "../../styles/index.css";
 
-export const ContactCard = () => {
+export const ContactCard = ({ name, address, phone, email }) => {
+
+    const { store, actions } = useContext(Context)
+
+
     return (
         <div className="container contact-card">
             <div className="row">
@@ -13,24 +18,28 @@ export const ContactCard = () => {
                 <div className="col-9">
                     <div className="d-flex name">
                         <div>
-                            <h4>Nombre contacto</h4>
+                            <h4>{name}</h4>
                         </div>
                         <div className="ms-auto me-2">
-                            <span><i class="fa-solid fa-user-pen me-4"></i><i class="fa-solid fa-user-minus"></i></span>
+                            <span>
+                                <Link className="edit-contact" to="/editcontact">
+                                    <i className="fa-solid fa-user-pen me-4"></i>
+                                </Link>
+                                <i className="fa-solid fa-user-minus"></i></span>
                         </div>
                     </div>
-                    <div class="d-flex flex-column info">
-                        <div class="p-1">
-                            <i class="fa-solid fa-location-crosshairs"></i>
-                            <span className="ms-3">Aquí va la dirección</span>
+                    <div className="d-flex flex-column info">
+                        <div className="p-1">
+                            <i className="fa-solid fa-location-crosshairs"></i>
+                            <span className="ms-3">{address}</span>
                         </div>
-                        <div class="p-1">
-                            <i class="fa-solid fa-mobile-screen-button"></i>
-                            <span className="ms-3">Aquí va el teléfono</span>
+                        <div className="p-1">
+                            <i className="fa-solid fa-mobile-screen-button"></i>
+                            <span className="ms-3">{phone}</span>
                         </div>
-                        <div class="p-1">
-                            <i class="fa-solid fa-envelope-open-text"></i>
-                            <span className="ms-3">Aquí va el email</span>
+                        <div className="p-1">
+                            <i className="fa-solid fa-envelope-open-text"></i>
+                            <span className="ms-3">{email}</span>
                         </div>
                     </div>
                 </div>

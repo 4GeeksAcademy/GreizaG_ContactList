@@ -1,41 +1,20 @@
-import React, { useContext, useState } from "react";
-import { Context } from "../store/appContext";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { Link, useParams } from "react-router-dom";
 import "../../styles/index.css";
 import { NewContactNavbar } from "../component/NewContactNavbar";
 
-export const NewContact = () => {
+export const EditContact = () => {
 
-    const navigate = useNavigate()
-    const { store, actions } = useContext(Context);
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        address: "",
-        phone: 0,
-    })
-
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            [name]: value,
-        }))
-    }
-
-
-    const handleSubmit = () => {
-        actions.addNewContact(formData);
-        navigate("/")
-    }
+    const params = useParams();
+    console.log(params);
 
     return (
         <React.Fragment>
             <NewContactNavbar />
             <div className="container new-contact">
-                <form className="row g-3 registerForm">
+                <form className="row g-3">
                     <div className="new-contact-title name text-center mb-4">
-                        <h2>Add New Contact</h2>
+                        <h2>Edit Contact</h2>
                     </div>
                     <div className="col-12 input">
                         <label htmlFor="inputFullName" className="form-label">
@@ -46,24 +25,14 @@ export const NewContact = () => {
                             className="form-control"
                             id="inputFullName"
                             placeholder="Full Name"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleInputChange}
+                            value={params.id}
                         />
                     </div>
                     <div className="col-md-12 input">
                         <label htmlFor="inputEmail4" className="form-label">
                             Email
                         </label>
-                        <input
-                            type="email"
-                            className="form-control"
-                            id="inputEmail4"
-                            placeholder="name@example.com"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                        />
+                        <input type="email" className="form-control" id="inputEmail4" placeholder="name@example.com" />
                     </div>
                     <div className="col-12 input">
                         <label htmlFor="inputPhone" className="form-label">
@@ -74,9 +43,6 @@ export const NewContact = () => {
                             className="form-control"
                             id="inputPhone"
                             placeholder="Phone"
-                            name="phone"
-                            value={formData.phone}
-                            onChange={handleInputChange}
                         />
                     </div>
                     <div className="col-12 input">
@@ -88,14 +54,10 @@ export const NewContact = () => {
                             className="form-control"
                             id="inputAddress"
                             placeholder="Apartment, studio, or floor"
-                            name="address"
-                            value={formData.address}
-                            onChange={handleInputChange}
                         />
                     </div>
                     <div className="container d-flex col-12 justify-content-center input">
-                        <button type="submit" className="btn"
-                            onClick={handleSubmit}>
+                        <button type="submit" className="btn">
                             Save
                         </button>
                     </div>

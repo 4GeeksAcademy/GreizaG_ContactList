@@ -1,42 +1,53 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+
+			contacts: []
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+			addNewContact: (data) => {
+				return fetch("https://playground.4geeks.com/contact/agendas/greizag/contacts", {
+					method: "POST",
+					body: JSON.stringify(data),
+					headers: { "Content-Type": "application/json" }
+				})
+					.then(response => {
+						console.log(response)
+						if (response.ok) {
+							return response.json()
+						}
+						throw new Error("Ocurrió un error agregando un nuevo contacto")
+					})
+					.then((data) => {
+						console.log("Contacto creado: ", data)
+						getAllContacts()
+					})
+					.catch((error) => error)
+			},
 
-				//reset the global store
-				setStore({ demo: demo });
+			getAllContacts: () => {
+				fetch("https://playground.4geeks.com/contact/agendas/greizag/contacts")
+					.then(response => {
+						console.log(response);
+						return response.json();
+					})
+					.then((data) => {
+						console.log("Data:", data)
+						console.log(data.contacts)
+						setStore({ contacts: data.contacts })
+					})
+					.catch((error) => {
+						console.log(error)
+					})
+			},
+
+			editContact: () => {
+
+			},
+
+			deleteContact: () => {
+
 			}
 		}
 	};
