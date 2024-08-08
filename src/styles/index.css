@@ -1,3 +1,85 @@
-/* 
-    General Styles
-*/
+body {
+    background-color: #d0fdd760;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.fa-house {
+  color: #f7bfd8
+}
+
+.fa-user-plus {
+  color: #f7bfd8
+}
+
+.fa-house:hover {
+  scale: 110%
+}
+
+.fa-user-plus:hover {
+  scale: 110%
+}
+
+.grey-qo-regular {
+    font-family: "Grey Qo", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+img {
+  height: 120px;
+  width: 120px;
+}
+
+.contact-card {
+  border: solid;
+  border-color: rgb(182, 236, 218);
+  padding: 10px;
+  width: 750px
+}
+
+.name {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: medium;
+  font-style: italic;
+  font-weight: bold;
+  color: #484446
+}
+
+.fa-user-pen:hover {
+  scale: 120%;
+  color: #f7bfd8
+}
+
+.fa-user-minus:hover {
+  scale: 120%;
+  color: #f7bfd8
+}
+
+.info {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: small;
+  font-weight: lighter;
+}
+
+.new-contact {
+  border: solid;
+  border-color: rgb(182, 236, 218);
+  border-radius: 10px;
+  padding: 10px;
+  width: 750px
+}
+
+.btn {
+  background-color: #f7bfd8;
+  border-color: #be3271;
+}
+
+.btn:hover {
+  background-color: #be3271;
+  color: #f7bfd8;
+}
+
+.input {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
