@@ -1,12 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "./../store/appContext";
 import { Link, useParams } from "react-router-dom";
 import "../../styles/index.css";
 
-export const ContactCard = ({ name, address, phone, email }) => {
+export const ContactCard = ({ name, address, phone, email, id }) => {
 
     const { store, actions } = useContext(Context)
 
+    useEffect(() => {
+        actions.getAllContacts()
+    }, [])
+
+    // const handleDeleteContact = (contactId) => {
+    //     actions.deleteContact(contactId)
+    // }
 
     return (
         <div className="container contact-card">
@@ -25,7 +32,12 @@ export const ContactCard = ({ name, address, phone, email }) => {
                                 <Link className="edit-contact" to="/editcontact">
                                     <i className="fa-solid fa-user-pen me-4"></i>
                                 </Link>
-                                <i className="fa-solid fa-user-minus"></i></span>
+                                <i className="fa-solid fa-user-minus"
+                                onClick={() => {
+                                    actions.deleteContact(id)
+                                }}
+                                // data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                ></i></span>
                         </div>
                     </div>
                     <div className="d-flex flex-column info">
@@ -44,6 +56,28 @@ export const ContactCard = ({ name, address, phone, email }) => {
                     </div>
                 </div>
             </div>
+            {/* <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" 
+            aria-hidden="true" style={{borderRadius: '15px'}}>
+				<div className="modal-dialog">
+					<div className="modal-content">
+						<div className="modal-header">
+							<h1 className="modal-title fs-5 name" id="exampleModalLabel">Delete contact?</h1>
+							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div className="modal-body">
+							<span>Do you want to delete {name} contact?</span>
+						</div>
+						<div className="modal-footer">
+							<button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+							<button type="button" className="btn btn-outline-info"
+								onClick={() => {
+									handleDeleteContact()
+								}}
+								data-bs-dismiss="modal">Delete</button>
+						</div>
+					</div>
+				</div>
+			</div> */}
         </div>
     );
 };
