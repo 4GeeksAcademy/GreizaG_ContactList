@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/index.css";
@@ -12,7 +12,7 @@ export const NewContact = () => {
         name: "",
         email: "",
         address: "",
-        phone: 0,
+        phone: "",
     })
 
     const handleInputChange = (event) => {
@@ -24,16 +24,22 @@ export const NewContact = () => {
     }
 
 
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault();
         actions.addNewContact(formData);
+        actions.getAllContacts();
         navigate("/")
     }
+
+    // useEffect(() => {
+    //     actions.getAllContacts();
+    // }, [])
 
     return (
         <React.Fragment>
             <NewContactNavbar />
             <div className="container new-contact">
-                <form className="row g-3 registerForm">
+                <form className="row g-3" onSubmit={handleSubmit}>
                     <div className="new-contact-title name text-center mb-4">
                         <h2>Add New Contact</h2>
                     </div>
@@ -94,8 +100,7 @@ export const NewContact = () => {
                         />
                     </div>
                     <div className="container d-flex col-12 justify-content-center input">
-                        <button type="submit" className="btn"
-                            onClick={handleSubmit}>
+                        <button type="submit" className="btn">
                             Save
                         </button>
                     </div>

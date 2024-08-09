@@ -9,9 +9,9 @@ export const Home = () => {
 
 	const { store, actions } = useContext(Context);
 
-	useEffect(() => {
-		actions.getAllContacts()
-	}, [])
+	// useEffect(() => {
+	// 	actions.getAllContacts()
+	// }, [])
 
 	return (
 		<React.Fragment>
