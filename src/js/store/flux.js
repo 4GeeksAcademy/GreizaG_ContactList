@@ -42,27 +42,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch((error) => console.log("Error: ", error));
 			},
 
-			// deleteContact: (id) => {
-
-			// 	const updateContacts = getStore().contacts.filter(
-			// 		(contact) => contact.id != id
-			// 	  );
-
-			// 	return fetch(`https://playground.4geeks.com/contact/agendas/greizag/contacts/${id}`, {
-			// 		method: "DELETE"
-			// 		, headers: { "Content-Type": "application/json" }
-			// 	})
-			// 		.then(response => {
-			// 			console.log(response)
-			// 		})
-			// 		.then(() => {
-			// 			console.log("Contacto borrado");
-			// 			console.log(contacts);
-			// 			getAllContacts();
-			// 		})
-			// 		.catch((error) => error)
-			// },
-
 			deleteContact: (id) => {
 
 				const updateContacts = getStore().contacts.filter(
