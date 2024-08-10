@@ -82,7 +82,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					console.log("Contacto editado con éxito");
 
-					// Actualiza la lista de contactos llamando a getAllContacts
 					await actions.getAllContacts();
 
 				} catch (error) {
