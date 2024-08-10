@@ -29,13 +29,13 @@ export const ContactCard = ({ name, address, phone, email, id }) => {
                         </div>
                         <div className="ms-auto me-2">
                             <span>
-                                <Link className="edit-contact" to="/editcontact">
+                                <Link className="edit-contact" to={`/editcontact/${id}`}>
                                     <i className="fa-solid fa-user-pen me-4"></i>
                                 </Link>
                                 <i className="fa-solid fa-user-minus"
-                                onClick={() => {
-                                    actions.deleteContact(id)
-                                }}
+                                    onClick={() => {
+                                        actions.deleteContact(id)
+                                    }}
                                 // data-bs-toggle="modal" data-bs-target="#exampleModal"
                                 ></i></span>
                         </div>

@@ -65,6 +65,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch((error) => error)
 			},
+
+			editContact: async (id, updatedData) => {
+				try {
+					const response = await fetch(`https://playground.4geeks.com/contact/agendas/greizag/contacts/${id}`, {
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(updatedData)
+					});
+
+					if (!response.ok) {
+						throw new Error("Error al editar el contacto");
+					}
+
+					console.log("Contacto editado con éxito");
+
+					// Actualiza la lista de contactos llamando a getAllContacts
+					await actions.getAllContacts();
+
+				} catch (error) {
+					console.error("Error:", error);
+				}
+			}
+
 		}
 	};
 };
